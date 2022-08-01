@@ -18,6 +18,11 @@
       "patterns": [
         "src"
       ],
+      "ignore": [
+        "src/server",
+        "node_modules"
+      ],
+      "legacyWatch": true,
       "extensions": "js,jsx"
     }
   },
@@ -29,9 +34,9 @@
     "eject": "react-scripts eject",
     "start-server": "npm run clean-build-folders && npm run build && npm run run-server",
     "build-server": "webpack --config webpack.server.js --mode=development --watch",
-    "run-server": "nodemon --inspect ./build-server/bundle.js",
+    "run-server": "nodemon ./build-server/bundle.js",
     "clean-build-folders": "rm -rf ./build/ && rm -rf ./build-server/",
-    "all": "npm-run-all --parallel watch build-server start-server"
+    "all": "npm-run-all --parallel build-server start-server"
   },
   "eslintConfig": {
     "extends": [
