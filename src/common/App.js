@@ -1,11 +1,24 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [rotateClockwise, setRotateClockwise] = useState(true);
+  const toggleRotatingDirection = () => {
+    setRotateClockwise((prev) => !prev);
+  };
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <button onClick={toggleRotatingDirection}>
+          Toggle Rotating Direction
+        </button>
+        <img
+          src={logo}
+          className="App-logo"
+          alt="logo"
+          style={{ animationDirection: rotateClockwise ? 'normal' : 'reverse' }}
+        />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
