@@ -1,10 +1,14 @@
 import express from 'express';
+import React from 'react';
+import App from '../common/App';
+import { renderToString } from 'react-dom/server';
 
 const PORT = 3001;
 const server = express();
 
 server.get('/', (req, res) => {
-  return res.send('Hello World!');
+  const html = renderToString(<App />);
+  return res.send(html);
 });
 
 server.use(express.static('build'));
